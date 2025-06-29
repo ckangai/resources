@@ -26,7 +26,7 @@ output "private-test-server-linux" {
 }
 
 output "private-test-server-linux-external-ip" {
-  value = "NONE"
+  value = google_compute_instance.private-test-server-linux.network_interface.0.access_config.0.nat_ip   # was "NONE"
 }
 
 output "private-test-server-linux-internal-ip" {
