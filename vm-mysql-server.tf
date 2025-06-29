@@ -14,7 +14,7 @@ resource "google_compute_instance" "mysql-server" {
   network_interface {
     network        = google_compute_network.private-vpc.name
     subnetwork     = google_compute_subnetwork.private-subnet_1.name
-  #  access_config { } 
+    access_config { } 
   }
 } 
 
