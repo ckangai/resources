@@ -16,7 +16,7 @@ resource "google_compute_instance" "private-test-server-linux" {
   network_interface {
     network        = google_compute_network.private-vpc.name
     subnetwork     = google_compute_subnetwork.private-subnet_1.name
-  #  access_config { } 
+    access_config { } 
   }
 } 
 
