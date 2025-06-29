@@ -23,7 +23,7 @@ output "mysql-server" {
 }
 
 output "mysql-server-external-ip" {
-  value = google_compute_instance.mysql-server.network_interface.0.nat_ip    # was "NONE"
+  value = google_compute_instance.mysql-server.network_interface.0.access_config.0.nat_ip    # was "NONE"
 }
 
 output "mysql-server-internal-ip" {
