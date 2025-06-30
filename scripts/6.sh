@@ -32,7 +32,7 @@
 PROJECT_ID="{SUB_PROJECT_ID}"
 ZONE="{SUB_ZONE}"
 
-PUBLIC_LINUX_VM="public-test-server-linux-b66da834" # Used for gcloud command, gcloud handles name resolution here
+PUBLIC_LINUX_VM="{SUB_PUBLIC_TEST_SERVER_LINUX_NAME}" # Used for gcloud command, gcloud handles name resolution here
 PRIVATE_LINUX_VM="{SUB_PRIVATE_TEST_SERVER_LINUX_NAME}" # Used for gcloud command, gcloud handles name resolution here
 MYSQL_CLIENT_VM="{SUB_MYSQL_CLIENT_VM}" # Used for gcloud command, gcloud handles name resolution here
 MYSQL_SERVER_VM="{SUB_MYSQL_SERVER_VM}" # Used for gcloud command, gcloud handles name resolution here
