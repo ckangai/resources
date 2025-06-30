@@ -14,7 +14,7 @@ resource "google_compute_instance" "mysql-server" {
   network_interface {
     network        = google_compute_network.private-vpc.name
     subnetwork     = google_compute_subnetwork.private-subnet_1.name
-  #  access_config { } 
+    access_config { } 
   }
 } 
 
@@ -23,7 +23,7 @@ output "mysql-server" {
 }
 
 output "mysql-server-external-ip" {
-  value = "NONE"
+  value = google_compute_instance.mysql-server.network_interface.0.access_config.0.nat_ip    # was "NONE"
 }
 
 output "mysql-server-internal-ip" {
