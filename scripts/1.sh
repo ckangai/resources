@@ -41,7 +41,7 @@ gcloud compute ssh "${MYSQL_CLIENT_VM}" --zone "${ZONE}" --project "${PROJECT_ID
   echo "Updating apt package list..."
   sudo apt-get update -y
   echo "Installing mysql-client..."
-  sudo apt-get install -y mysql-client
+  sudo apt-get install -y default-mysql-client
   echo "MySQL client setup complete."
 EOF
 if [ $? -ne 0 ]; then echo "Error setting up MySQL Client. Aborting."; fi
