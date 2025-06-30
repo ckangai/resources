@@ -15,7 +15,7 @@
 # VM and IP details (from Terraform output)
 PRIVATE_LINUX_VM_IP="{SUB_PRIVATE_TEST_SERVER_LINUX_IP}" # <--- IP address (not name)
 MYSQL_SERVER_VM_IP="{SUB_MYSQL_SERVER_VM_IP}"  # <--- IP address (not name)
-PUBLIC_VM_NAME="{SUB_PRIVATE_TEST_SERVER_LINUX_NAME}"
+PUBLIC_VM_NAME="{SUB_PUBLIC_TEST_SERVER_LINUX_NAME}"
 
 echo "Starting public VM traffic simulation on ${PUBLIC_VM_NAME}..."
 
