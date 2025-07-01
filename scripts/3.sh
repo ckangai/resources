@@ -9,7 +9,7 @@
 # Originates from public-vpc, accesses private-vpc via peering using internal IPs.
 
 # VM and IP details
-MYSQL_SERVER_VM_IP="{SUB_MYSQL_CLIENT_VM_IP}" # <--- IP address (not name)
+MYSQL_SERVER_VM_IP="{SUB_MYSQL_SERVER_VM_IP}" # <--- IP address (not name)
 MYSQL_CLIENT_VM_NAME="{SUB_MYSQL_CLIENT_VM}"
 
 echo "Starting MySQL client traffic simulation on ${MYSQL_CLIENT_VM_NAME}..."
