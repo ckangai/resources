@@ -22,7 +22,7 @@ gcloud compute ssh "${MYSQL_SERVER_VM}" --zone "${ZONE}" --project "${PROJECT_ID
   sudo apt-get update -y
   echo "Installing mysql-server..."
   sudo apt-get install -y default-mysql-server
-  sed -i 's/\#bind-address/bind-address/g' 50-server.cnf
+  sudo sed -i 's/\#bind-address/bind-address/g' /etc/mysql/mariadb.conf.d/50-server.cnf
   echo "Starting mysql service..."
   sudo systemctl start mysql
   # Create a test database and user accessible from any host (%) for simulation purposes.
