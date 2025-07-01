@@ -25,7 +25,7 @@ gcloud compute ssh "${MYSQL_SERVER_VM}" --zone "${ZONE}" --project "${PROJECT_ID
   sudo systemctl start mysql
   sudo sed -i 's/\#bind-address/bind-address/g' /etc/mysql/mariadb.conf.d/50-server.cnf
   sudo sed -i 's/127\.0\.0\.1/0\.0\.0\.0/g' /etc/mysql/mariadb.conf.d/50-server.cnf
-  echo "Starting mysql service..."
+  echo "restarting mysql service..."
   sudo systemctl restart mysql
   # Create a test database and user accessible from any host (%) for simulation purposes.
   # In a real environment, restrict 'testuser' to specific client IPs (e.g., 'testuser'@'10.1.1.%')
