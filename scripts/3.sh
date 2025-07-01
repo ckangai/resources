@@ -50,4 +50,4 @@ echo "Simulating MySQL connection to non-standard/blocked port 3307 (expected to
     logger -t "${MYSQL_CLIENT_VM_NAME}" "OK: MySQL connection to non-standard port 3307 failed as expected at $(date)."
   else
     logger -t "${MYSQL_CLIENT_VM_NAME}" "CRITICAL: MySQL connection to non-standard port 3307 SUCCEEDED unexpectedly at $(date)."
-  fi
+  fi)
