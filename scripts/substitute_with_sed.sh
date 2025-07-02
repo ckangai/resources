@@ -1,9 +1,8 @@
-sed -i 's/{SUB_PROJECT_ID}/<your-project-id>/g' 1.sh 2.sh 3.sh 4.sh 5.sh 6.sh
-sed -i 's/{SUB_ZONE}/<your-zone>/g' 1.sh 2.sh 3.sh 4.sh 5.sh 6.sh
-sed -i 's/{SUB_MYSQL_SERVER_VM}/<your-sql-server-vm-name>/g' 1.sh 2.sh 3.sh 4.sh 5.sh 6.sh
-sed -i 's/{SUB_MYSQL_CLIENT_VM}/<your-sql-client-vm-name>/g' 1.sh 2.sh 3.sh 4.sh 5.sh 6.sh
-sed -i 's/{SUB_MYSQL_SERVER_VM_IP}/<your-sql-server-vm-ip>/g' 1.sh 2.sh 3.sh 4.sh 5.sh 6.sh
-sed -i 's/{SUB_MYSQL_CLIENT_VM_IP}/<your-sql-client-vm-ip>/g' 1.sh 2.sh 3.sh 4.sh 5.sh 6.sh
-sed -i 's/{SUB_PUBLIC_TEST_SERVER_LINUX_NAME}/<your-public-test-server-linux-name>/g' 1.sh 2.sh 3.sh 4.sh 5.sh 6.sh
-sed -i 's/{SUB_PRIVATE_TEST_SERVER_LINUX_NAME}/<your-private-test-server-linux-name>/g' 1.sh 2.sh 3.sh 4.sh 5.sh 6.sh
-sed -i 's/{SUB_PRIVATE_TEST_SERVER_LINUX_IP}/<your-private-test-server-linux-ip>/g' 1.sh 2.sh 3.sh 4.sh 5.sh 6.sh
+sed -i 's/{SUB_PROJECT_ID}/<your-project-id>/g' 1.sh 2.sh 3.sh 4.sh 5.sh 6.sh 7_firewall.sh 8_ipsq.sh 9_ipts.sh
+sed -i 's/{SUB_ZONE}/<your-zone>/g' 1.sh 2.sh 3.sh 4.sh 5.sh 6.sh 7_firewall.sh 8_ipsq.sh 9_ipts.sh
+sed -i 's/{SUB_MYSQL_SERVER_VM}/<your-sql-server-vm-name>/g' 1.sh 2.sh 3.sh 4.sh 5.sh 6.sh 7_firewall.sh 8_ipsq.sh 9_ipts.sh
+sed -i 's/{SUB_MYSQL_CLIENT_VM}/<your-sql-client-vm-name>/g' 1.sh 2.sh 3.sh 4.sh 5.sh 6.sh 7_firewall.sh 8_ipsq.sh 9_ipts.sh
+sed -i 's/{SUB_MYSQL_SERVER_VM_IP}/<your-sql-server-vm-ip>/g' 1.sh 2.sh 3.sh 4.sh 5.sh 6.sh 7_firewall.sh 8_ipsq.sh 9_ipts.sh
+sed -i 's/{SUB_MYSQL_CLIENT_VM_IP}/<your-sql-client-vm-ip>/g' 1.sh 2.sh 3.sh 4.sh 5.sh 6.sh 7_firewall.sh 8_ipsq.sh 9_ipts.sh
+sed -i 's/{SUB_PRIVATE_TEST_SERVER_LINUX_NAME}/<your-private-test-server-linux-name>/g' 1.sh 2.sh 3.sh 4.sh 5.sh 6.sh 7_firewall.sh 8_ipsq.sh 9_ipts.sh
+sed -i 's/{SUB_PRIVATE_TEST_SERVER_LINUX_IP}/<your-private-test-server-linux-ip>/g' 1.sh 2.sh 3.sh 4.sh 5.sh 6.sh 7_firewall.sh 8_ipsq.sh 9_ipts.sh
