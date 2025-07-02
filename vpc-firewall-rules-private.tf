@@ -7,7 +7,7 @@ resource "google_compute_firewall" "private-allow-ssh" {
     ports    = ["22"]
   }
   source_ranges = [
-    "0.0.0.0/0"  #was "${var.subnet_cidr_public}"
+    "${var.subnet_cidr_public}"  #was "${var.subnet_cidr_public}"
   ]
   target_tags = ["allow-ssh"] 
 }
@@ -21,7 +21,7 @@ resource "google_compute_firewall" "private-allow-rdp" {
     ports    = ["3389"]
   }
   source_ranges = [
-    "0.0.0.0/0"  #was "${var.subnet_cidr_public}"
+    "${var.subnet_cidr_public}"  #was "${var.subnet_cidr_public}"
   ]
   target_tags = ["allow-rdp"] 
 }
@@ -34,7 +34,7 @@ resource "google_compute_firewall" "private-allow-ping" {
     protocol = "icmp"
   }
   source_ranges = [
-    "0.0.0.0/0"  #was "${var.subnet_cidr_public}"
+    "${var.subnet_cidr_public}"  #was "${var.subnet_cidr_public}"
   ]
 }
 
@@ -47,7 +47,7 @@ resource "google_compute_firewall" "private-allow-mysql" {
     ports    = ["3306"]
   }
   source_ranges = [
-    "0.0.0.0/0"  #was "${var.subnet_cidr_public}"
+    "${var.subnet_cidr_public}"  #was "${var.subnet_cidr_public}"
   ]
   target_tags = ["allow-mysql"] 
 }
