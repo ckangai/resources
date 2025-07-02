@@ -56,5 +56,11 @@ bq --project_id="${PROJECT_ID}" query \
    --use_legacy_sql=false \
    --format=prettyjson \
    "SELECT * FROM demos.products"
+bq mk --dataset $1:demos
+
+bq --project_id {SUB_PROJECT_ID} load --source_format=CSV \
+--autodetect \
+demos.customers \
+gs://{SUB_PROJECT_ID}/customers.csv
 
 echo "Private VM simulation scripts are running in the background. Check logs for activity in Cloud Logging."
