@@ -84,13 +84,11 @@ echo "All VMs are running. Proceeding with setup and simulations."
 echo ""
 echo "--- Step 1: Initializing MySQL Server and Client ---"
 # Run the setup script first
-bash 1.sh         # setup_gcp_environment.sh
-if [ $? -ne 0 ]; then
-  echo "MySQL environment setup failed. Aborting."
-  exit 1
-fi
-echo "MySQL environment setup complete."
-sleep 10 # Give services a moment to start and stabilize
+echo "Deploying 1.sh on ${MYSQL_CLIENT_VM}..."
+gcloud compute scp 1.sh "${MYSQL_CLIENT_VM}:~/1.sh" --zone "${ZONE}" --project "${PROJECT_ID}"
+gcloud compute ssh "${MYSQL_CLIENT_VM}" --zone "${ZONE}" --project "${PROJECT_ID}" \
+  --command="chmod +x ~/1.sh && nohup ~/1.sh &> ~/mysql_setup.log &"
+echo "MySQL setup script launched (check ~/mysql_setup.log and Cloud Logging)...."
 
 # ****************************************************************
 echo ""
