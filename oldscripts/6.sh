@@ -81,7 +81,16 @@ done
 echo "All VMs are running. Proceeding with setup and simulations."
 
 # ****************************************************************
+echo ""
+echo "--- Step 1: Initializing MySQL Server and Client ---"
+# Run the setup script first
+echo "Deploying 1.sh on ${MYSQL_CLIENT_VM}..."
+gcloud compute scp 1.sh "${MYSQL_CLIENT_VM}:~/1.sh" --zone "${ZONE}" --project "${PROJECT_ID}"
+gcloud compute ssh "${MYSQL_CLIENT_VM}" --zone "${ZONE}" --project "${PROJECT_ID}" \
+  --command="chmod +x ~/1.sh && nohup ~/1.sh &> ~/mysql_setup.log &"
+echo "MySQL setup script launched (check ~/mysql_setup.log and Cloud Logging)...."
 
+# ****************************************************************
 echo ""
 echo "--- Step 2: Deploying & Executing Simulation Scripts on VMs ---"
 
@@ -93,7 +102,30 @@ gcloud compute ssh "${PUBLIC_LINUX_VM}" --zone "${ZONE}" --project "${PROJECT_ID
 echo "Public VM simulation script launched (check ~/public_vm_traffic.log and Cloud Logging)."
 
 # ****************************************************************
+# Deploy and run MySQL client traffic simulation
+echo "Deploying 3.sh on ${MYSQL_CLIENT_VM}..."
+gcloud compute scp 3.sh "${MYSQL_CLIENT_VM}:~/3.sh" --zone "${ZONE}" --project "${PROJECT_ID}"
+gcloud compute ssh "${MYSQL_CLIENT_VM}" --zone "${ZONE}" --project "${PROJECT_ID}" \
+  --command="chmod +x ~/3.sh && nohup ~/3.sh &> ~/mysql_client_traffic.log &"
+echo "MySQL client simulation script launched (check ~/mysql_client_traffic.log and Cloud Logging)."
 
+# ****************************************************************
+# Deploy and run MySQL server error simulation
+echo "Deploying 4.sh on ${MYSQL_SERVER_VM}..."
+gcloud compute scp 4.sh "${MYSQL_SERVER_VM}:~/4.sh" --zone "${ZONE}" --project "${PROJECT_ID}"
+gcloud compute ssh "${MYSQL_SERVER_VM}" --zone "${ZONE}" --project "${PROJECT_ID}" \
+  --command="chmod +x ~/4.sh && nohup ~/4.sh &> ~/mysql_server_errors.log &"
+echo "MySQL server error simulation script launched (check ~/mysql_server_errors.log and Cloud Logging)."
+
+# ****************************************************************
+# Deploy and run private VM error simulation
+echo "Deploying 5.sh on ${PRIVATE_LINUX_VM}..."
+gcloud compute scp 5.sh "${PRIVATE_LINUX_VM}:~/5.sh" --zone "${ZONE}" --project "${PROJECT_ID}"
+gcloud compute ssh "${PRIVATE_LINUX_VM}" --zone "${ZONE}" --project "${PROJECT_ID}" \
+  --command="chmod +x ~/5.sh && nohup ~/5.sh &> ~/private_vm_errors.log &"
+echo "Private VM error simulation script launched (check ~/private_vm_errors.log and Cloud Logging)."
+
+# ****************************************************************
 echo ""
 echo "--- All simulation scripts are now running in the background on their respective VMs. ---"
 echo "You can check the logs via Google Cloud Logging in the GCP Console."

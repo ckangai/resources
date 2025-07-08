@@ -16,8 +16,8 @@
 # Observe Logs: Go to the Google Cloud Console, navigate to Logging > Logs Explorer.
 # Filter by resource.type="gce_instance" to see all VM logs.
 # Look for specific log messages from the scripts 
-# (e.g., messages tagged with {SUB_PRIVATE_TEST_SERVER_LINUX_NAME}, {SUB_MYSQL_CLIENT_VM}, 
-# {SUB_MYSQL_SERVER_VM}, etc.) to see the simulated load and errors.
+# (e.g., messages tagged with private-test-server-linux-9808a183, mysql-client-9808a183, 
+# mysql-server-9808a183, etc.) to see the simulated load and errors.
 # You'll see successful pings, SSH connections, MySQL queries, as well as the injected "ERROR" 
 # and "CRITICAL" messages from logger for the simulated faults. You will also see expected 
 # connection failures due to firewall rules or lack of external IPs.
@@ -32,10 +32,10 @@
 PROJECT_ID="{SUB_PROJECT_ID}"
 ZONE="{SUB_ZONE}"
 
-PUBLIC_LINUX_VM="{SUB_PUBLIC_TEST_SERVER_LINUX_NAME}" # Used for gcloud command, gcloud handles name resolution here
-PRIVATE_LINUX_VM="{SUB_PRIVATE_TEST_SERVER_LINUX_NAME}" # Used for gcloud command, gcloud handles name resolution here
-MYSQL_CLIENT_VM="{SUB_MYSQL_CLIENT_VM}" # Used for gcloud command, gcloud handles name resolution here
-MYSQL_SERVER_VM="{SUB_MYSQL_SERVER_VM}" # Used for gcloud command, gcloud handles name resolution here
+PUBLIC_LINUX_VM="public-test-server-linux-9808a183" # Used for gcloud command, gcloud handles name resolution here
+PRIVATE_LINUX_VM="private-test-server-linux-9808a183" # Used for gcloud command, gcloud handles name resolution here
+MYSQL_CLIENT_VM="mysql-client-9808a183" # Used for gcloud command, gcloud handles name resolution here
+MYSQL_SERVER_VM="mysql-server-9808a183" # Used for gcloud command, gcloud handles name resolution here
 
 # --- BigQuery Errors Simulation ---
 if bq --project_id="${PROJECT_ID}" mk --schema=product_id:integer,product_name:string,supplier_id:integer,category_id:integer,quantity_per_unit:string,unit_price:float,units_in_stock:integer,units_on_order:integer,reorder_level:integer,discontinued:boolean --table "$1:demos.products" 2>&1 | logger -t "bq-table-creation"; then
@@ -80,8 +80,8 @@ for vm in "${VMS[@]}"; do
 done
 echo "All VMs are running. Proceeding with setup and simulations."
 
-# ****************************************************************
 
+# ****************************************************************
 echo ""
 echo "--- Step 2: Deploying & Executing Simulation Scripts on VMs ---"
 
@@ -92,13 +92,3 @@ gcloud compute ssh "${PUBLIC_LINUX_VM}" --zone "${ZONE}" --project "${PROJECT_ID
   --command="chmod +x ~/2.sh && nohup ~/2.sh &> ~/public_vm_traffic.log &"
 echo "Public VM simulation script launched (check ~/public_vm_traffic.log and Cloud Logging)."
 
-# ****************************************************************
-
-echo ""
-echo "--- All simulation scripts are now running in the background on their respective VMs. ---"
-echo "You can check the logs via Google Cloud Logging in the GCP Console."
-echo "Press Ctrl+C to stop this orchestration script (background processes on VMs will continue)."
-echo "To terminate the simulations on the VMs, SSH into each VM and kill the respective processes (e.g., 'pkill -f 2.sh')."
-
-# Keep the orchestrator running to provide visual confirmation.
-tail -f /dev/null
