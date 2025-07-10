@@ -11,7 +11,6 @@ bq --project_id="${PROJECT_ID}" query \
    --use_legacy_sql=false \
    --format=prettyjson \
    "SELECT * FROM demos.products"
-bq mk --dataset $1:demos
 
 bq --project_id ${PROJECT_ID} load --source_format=CSV \
 --autodetect \
