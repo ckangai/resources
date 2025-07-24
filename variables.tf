@@ -5,13 +5,13 @@ variable "project_id" {
 }
 
 # Region to use for Subnet 1
-variable "gcp_region_1" {
+variable "gcp_region" {
   type = string
   description = "GCP Region"
 }
 
 # Zone used for VMs
-variable "gcp_zone_1" {
+variable "gcp_zone" {
   type = string
   description = "GCP Zone"
 }

@@ -2,7 +2,7 @@
 resource "google_compute_instance" "mysql-server" {
   name         = "mysql-server-${random_id.instance_id.hex}"
   machine_type = "f1-micro"
-  zone         = var.gcp_zone_1
+  zone         = var.gcp_zone
   tags         = ["allow-ssh", "allow-mysql"]
 
   boot_disk {

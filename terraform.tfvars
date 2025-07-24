@@ -1,7 +1,7 @@
 # GCP Settings
 project_id    = "<your-project_id-here>" 
-gcp_region_1  = "us-central1"
-gcp_zone_1    = "us-central1-a"
+gcp_region  = "us-central1"
+gcp_zone    = "us-central1-a"
 
 # GCP Network Variables
 subnet_cidr_public  = "10.1.1.0/24"
