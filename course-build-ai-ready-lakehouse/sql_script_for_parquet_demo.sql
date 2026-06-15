@@ -1,3 +1,11 @@
+--Step 0: Create the dataset
+-- Create the demo dataset in the US multi-region
+CREATE SCHEMA IF NOT EXISTS `demo_dataset`
+OPTIONS(
+  location = 'US',
+  description = 'Demo dataset for BigQuery ML and Vertex AI LLM integration in the US Multi-Region'
+);
+
 -- Step 1: Create the product reviews table
 CREATE OR REPLACE TABLE `demo_dataset.product_reviews` (
   review_id INT64,
